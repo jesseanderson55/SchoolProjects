@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.OwnerPages.JobWorkersPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <Grid RowSpacing="0"  BackgroundColor="{StaticResource headerfootercolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <listview:SfListView x:Name="WorkersLaborListView" ItemSize="90" AutoFitMode="Height"
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}"
+                             SelectionGesture="Tap" SelectionMode="Single"  IsStickyHeader="True" 
+                                ItemTapped="WorkersLaborListView_ItemTapped">
+
+            <syncfusion:SfListView.HeaderTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="{StaticResource textcolor}" Padding="0" Margin="0">
+                        <Grid BackgroundColor="{StaticResource buttonscolor}" HeightRequest="30" Padding="0" Margin="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label LineBreakMode="NoWrap" Text="Worker" FontAttributes="Bold" BackgroundColor="{StaticResource buttonscolor}"
+                                   HorizontalOptions="Start" VerticalOptions="Center" TranslationX="5"/>
+                            <Label LineBreakMode="NoWrap" Text="Crew Name" FontAttributes="Bold" Padding="0,0,5,0" BackgroundColor="{StaticResource buttonscolor}"
+                                   HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </syncfusion:SfListView.HeaderTemplate>
+
+            <syncfusion:SfListView.SelectedItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource highlightscolor}">
+
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding WorkerLastName}" HorizontalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CrewName}" HorizontalOptions="End"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.SelectedItemTemplate>
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+
+                                        <Label LineBreakMode="NoWrap"
+                                                       Text="{Binding WorkerLastName}" HorizontalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding CrewName}" HorizontalOptions="End"/>
+
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+
+        </listview:SfListView>
+
+        <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" 
+                      Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="addWorkerToTheJobButton" Text="Add Worker" Clicked="addWorkerToTheJobButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="0" BorderWidth="1"/>
+            <Button x:Name="removeWorkerFromJobButton" Text="Remove Worker" Clicked="removeWorkerFromJobButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="1" BorderWidth="1"/>
+            <Button x:Name="addCrewToTheJobButton" Text="Add Crew" Clicked="addCrewToTheJobButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="2" BorderWidth="1"/>
+            <Button x:Name="removeCrewFromJobButton" Text="Remove Crew" Clicked="removeCrewFromJobButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="3" BorderWidth="1"/>
+        </Grid>
+
+
+        <listview:SfListView x:Name="allWorkersCrewListView" ItemSize="90" AutoFitMode="Height" Grid.Row="2"
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" 
+                             SelectionGesture="Tap" SelectionMode="Single" ItemTapped="allWorkersCrewListView_ItemTapped">
+
+            <syncfusion:SfListView.DataSource>
+                <dataSource:DataSource>
+                    <!--selects properties to sort the listview by-->
+                    <dataSource:DataSource.SortDescriptors>
+                        <dataSource:SortDescriptor PropertyName="IsSupervisor" Direction="Ascending"/>
+                    </dataSource:DataSource.SortDescriptors>
+                </dataSource:DataSource>
+            </syncfusion:SfListView.DataSource>
+
+            <syncfusion:SfListView.SelectedItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource highlightscolor}">
+
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding WorkerLastName}" HorizontalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CrewName}" HorizontalOptions="End"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.SelectedItemTemplate>
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+
+                                        <Label LineBreakMode="NoWrap"
+                                                       Text="{Binding WorkerLastName}" HorizontalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding CrewName}" HorizontalOptions="End"/>
+
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+
+        </listview:SfListView>
+
+        <Grid Grid.Row="3" HorizontalOptions="FillAndExpand" 
+                      Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked"
+                                        FontAttributes="Bold"  BorderWidth="1"/>
+            <Button x:Name="employeesButton" Text="Employees" Clicked="employeesButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="1" BorderWidth="1"/>
+            <Button x:Name="cancelButton" Text="Cancel" Clicked="cancelButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="2" BorderWidth="1"/>
+
+        </Grid>
+    </Grid>
+</ContentPage>

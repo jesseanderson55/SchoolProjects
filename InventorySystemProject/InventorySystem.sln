@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManufacturingInvUI", "ManufacturingInvUI\ManufacturingInvUI.csproj", "{AEAC2485-1F63-4599-8E30-31E8C95CF007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryLibrary", "InventoryLibrary\InventoryLibrary.csproj", "{08C13A11-DDAE-4BE0-A79E-8F462231C2CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEAC2485-1F63-4599-8E30-31E8C95CF007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEAC2485-1F63-4599-8E30-31E8C95CF007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEAC2485-1F63-4599-8E30-31E8C95CF007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEAC2485-1F63-4599-8E30-31E8C95CF007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C13A11-DDAE-4BE0-A79E-8F462231C2CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C13A11-DDAE-4BE0-A79E-8F462231C2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C13A11-DDAE-4BE0-A79E-8F462231C2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C13A11-DDAE-4BE0-A79E-8F462231C2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BBBB5EA-653C-4388-8F17-4174C58F6E04}
+	EndGlobalSection
+EndGlobal

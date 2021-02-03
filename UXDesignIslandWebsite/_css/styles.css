@@ -1,0 +1,104 @@
+
+/* Color Palette-------------
+#476d9e
+#919fab
+#5f644f
+#95abd4
+#1a2a46
+*/
+
+
+/* Global styles--------------
+*/
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background-color: #919fab;
+    color: #1a2a46
+}
+
+a:hover {
+    text-decoration: none;
+}
+h1, h2, h3 {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.centerwrap-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
+
+/* Header & Footer------------
+*/
+
+header img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+
+
+/* Navigation-----------------
+*/
+
+
+
+/* Tabbed Information
+*/
+
+.tab {
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    background-color: #1a2a46;
+}
+
+nav {
+    text-align: center;
+    width: 100%;
+    background-color: #1a2a46;
+} 
+
+nav button {
+    display: inline-block;
+    padding: 15px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav button.active {
+  background-color: orange;
+}
+
+nav .odd {
+    background: #95abd4;
+    color: white;
+}
+nav .even {
+    background: #1a2a46;
+    color: white;
+}

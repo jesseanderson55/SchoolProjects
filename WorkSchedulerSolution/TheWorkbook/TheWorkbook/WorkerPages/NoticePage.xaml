@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:chat="clr-namespace:Syncfusion.XForms.Chat;assembly=Syncfusion.SfChat.XForms" xmlns:syncTheme="clr-namespace:Syncfusion.XForms.Themes;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.WorkerPages.NoticePage">
+
+
+    <ContentPage.Resources>
+
+        <syncTheme:SyncfusionThemeDictionary>
+            <syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+
+                <ResourceDictionary>
+                    <x:String x:Key="SfChatTheme">CustomTheme</x:String>
+
+                    <Color x:Key="SfChatMessageInputViewBackgroundColor">#683F32</Color>
+
+                    <Color x:Key="SfChatIncomingMessageTextColor">#ECE7EA</Color>
+                    <Color x:Key="SfChatIncomingMessageBackgroundColor">#9E6F32</Color>
+
+                    <Color x:Key="SfChatOutgoingMessageTextColor">#ECE7EA</Color>
+                    <Color x:Key="SfChatOutgoingMessageBackgroundColor">#28322F</Color>
+
+                    <Color x:Key="SfChatIncomingMessageTimestampTextColor">#28322F</Color>
+                    <Color x:Key="SfChatIncomingMessageAuthorTextColor">#28322F</Color>
+
+                    <Color x:Key="SfChatOutgoingMessageTimestampTextColor">#28322F</Color>
+                    <Color x:Key="SfChatOutgoingMessageAuthorTextColor">#28322F</Color>
+
+                    <Color x:Key="SyncPrimaryForegroundColor">#683F32</Color>
+                    <Color x:Key="SyncPrimaryColor">#ECE7EA</Color>
+
+                    <Style TargetType="Label">
+                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                    </Style>
+
+                </ResourceDictionary>
+            </syncTheme:SyncfusionThemeDictionary.MergedDictionaries>
+        </syncTheme:SyncfusionThemeDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem IconImageSource="refresh.png" Clicked="Refresh_Clicked"
+                     Priority="3" Text="Refresh"
+                     Order="Primary"/>
+
+    </ContentPage.ToolbarItems>
+
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource backgroundcolor}" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                AbsoluteLayout.LayoutFlags="All" x:Name="background">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <Label x:Name="ChatLabel" Text="Message All Workers" Grid.Row="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="{StaticResource headerfootercolor}"/>
+
+        <chat:SfChat x:Name="sfChat" SendMessage="sfChat_SendMessage" BackgroundColor="Transparent" Grid.Row="1"/>
+
+    </Grid>
+</ContentPage>

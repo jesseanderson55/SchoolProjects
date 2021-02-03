@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.OwnerPages.JobCustomerPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+        
+    </ContentPage.ToolbarItems>
+    
+    
+    <Grid BackgroundColor="{StaticResource headerfootercolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <listview:SfListView x:Name="CustomerListView" ItemSize="90" AutoFitMode="Height" GroupHeaderSize="50" 
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" AllowGroupExpandCollapse="True"
+                             SelectionGesture="Tap" SelectionMode="Single" IsStickyHeader="True"
+                             ItemTapped="CustomerListView_ItemTapped">
+
+            <syncfusion:SfListView.DataSource>
+                <dataSource:DataSource>
+                    <!--selects properties to sort the listview by-->
+                    <dataSource:DataSource.SortDescriptors>
+                        <dataSource:SortDescriptor PropertyName="CustomerName" Direction="Ascending"/>
+                    </dataSource:DataSource.SortDescriptors>
+
+                </dataSource:DataSource>
+            </syncfusion:SfListView.DataSource>
+
+            <syncfusion:SfListView.SelectedItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource highlightscolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CustomerName}"/>
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CustomerEmail}" Grid.Column="1"/>
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CustomerPhone}" Grid.Column="2"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.SelectedItemTemplate>
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" x:Name="itemTemplateLVLabel" 
+                                                       Text="{Binding CustomerName}"/>
+                                        <Label LineBreakMode="NoWrap"
+                                                       Text="{Binding CustomerEmail}" Grid.Column="1"/>
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding CustomerPhone}" Grid.Column="2"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+
+        </listview:SfListView>
+
+
+        <Grid  Grid.Row="1" HorizontalOptions="Fill" Padding="5,5,5,5" BackgroundColor="{StaticResource backgroundcolor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+            
+        <Label Grid.Row="0" Text="Customer Name" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="0" x:Name="customerNameEntry" Grid.Column="1"/>
+
+        <Label Grid.Row="1" Text="Email" HorizontalOptions="Start" VerticalOptions="Center"  Margin="5,0,0,0"/>
+        <Entry Grid.Row="1" x:Name="customerEmailEntry" Grid.Column="1"/>
+
+        <Label Grid.Row="2" Text="Phone" HorizontalOptions="Start" VerticalOptions="Center"  Margin="5,0,0,0"/>
+        <Entry Grid.Row="2" x:Name="customerPhoneEntry" Grid.Column="1"/>
+
+        <Label Grid.Row="3" Text="Second Phone" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="3" x:Name="customerPhone2Entry" Grid.Column="1"/>
+
+        <Label Grid.Row="4" Text="Street Address" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="4" x:Name="streetEntry" Grid.Column="1" />
+
+        <Label Grid.Row="5" Text="City" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="5" x:Name="cityAddressEntry" Grid.Column="1"/>
+
+        <Label Grid.Row="6" Text="State" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="6" x:Name="stateAddressEntry" Grid.Column="1"/>
+
+        <Label Grid.Row="7" Text="Zip" HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0"/>
+        <Entry Grid.Row="7" x:Name="zipAddressEntry" Grid.Column="1"/>
+        </Grid>
+        
+        
+        <Grid Grid.Row="2" HorizontalOptions="CenterAndExpand" Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}" WidthRequest="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="saveButton"
+                    Grid.Column="0"
+                    Text="Save"
+                    FontAttributes="Bold"
+                    BorderWidth="1"
+                    Clicked="saveButton_Clicked"/>
+
+            <Button x:Name="cancelButton"
+                    Grid.Column="1"
+                    Text="Cancel"
+                    FontAttributes="Bold"
+                    BorderWidth="1"
+                    Clicked="cancelButton_Clicked"/>
+
+            <Button x:Name="deleteButton"
+                    Grid.Column="2"
+                    Text="Delete"
+                    FontAttributes="Bold"
+                    BorderWidth="1"
+                    Clicked="deleteButton_Clicked"/>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

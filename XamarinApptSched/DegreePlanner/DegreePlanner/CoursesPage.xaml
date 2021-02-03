@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.CoursesPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToMainPage" 
+                     Text="Main"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="ToMainPage_Clicked"/>
+        <ToolbarItem x:Name="ToTermPage" 
+                     Text="Term"
+                     Priority="1"
+                     Order="Secondary"
+                     Clicked="ToTermPage_Clicked"/>
+        <ToolbarItem x:Name="ToExamPage" 
+                     Text="Milestone"
+                     Priority="1"
+                     Order="Secondary"
+                     Clicked="ToExamPage_Clicked"/>
+        <ToolbarItem x:Name="addButton"
+                     Icon="add.png"
+                     Clicked="addButton_Clicked"
+                     Priority="3"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="editButton"
+                     Icon="edit.png"
+                     Clicked="editButton_Clicked"
+                     Priority="4"
+                     Order="Primary"/>
+        <ToolbarItem Text="Notes"
+                     x:Name="notesButton"
+                     Clicked="notesButton_Clicked" 
+                     Priority="2"
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Label Text="Courses" 
+               FontSize="Medium"
+               Margin="0"
+               HeightRequest="40"/>
+        <ListView x:Name="courseListView" 
+                  RowHeight="40" 
+                  VerticalScrollBarVisibility="Always" 
+                  Margin="0"
+                  ItemSelected="courseListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding courseTitle}" 
+                               FontSize="Caption" 
+                               HorizontalOptions="Fill"  
+                               VerticalOptions="FillAndExpand"
+                               FontAttributes="Bold" 
+                               BackgroundColor="{StaticResource blueTheme2}" 
+                               TextColor="{StaticResource printColor}" 
+                               HorizontalTextAlignment="Center" 
+                               Margin=".5">
+                        </Label>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

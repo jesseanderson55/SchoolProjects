@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToTermPage" 
+                     Text="Term"
+                     Priority="1"
+                     Order="Primary"
+                     Clicked="ToTermPage_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource blueTheme2}">
+            <Label Text="Milestones"
+                   HeightRequest="40"
+                   FontSize="Medium"/>
+            <ListView x:Name="milestoneListView" 
+                  RowHeight="50" 
+                  VerticalScrollBarVisibility="Always" 
+                  Margin="0"
+                     
+                      HasUnevenRows="True">
+                <ListView.Header>
+                    <Grid>
+                        <Label Text="Name" 
+                               FontSize="Caption"
+                               Grid.Column="0"/>
+                        <Label Text="Type" 
+                               FontSize="Caption"
+                               Grid.Column="1"/>
+                        <Label Text="Course" 
+                               FontSize="Caption"
+                               Grid.Column="2"/>
+                        <Label Text="Due" 
+                               FontSize="Caption"
+                               Grid.Column="3"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView>
+                                <Grid Padding="1">
+                                    <Label Text="{Binding milestoneName}" 
+                                   FontSize="Caption" 
+                                           LineBreakMode="WordWrap"
+                                       Grid.Column="0"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="FillAndExpand"
+                                   FontAttributes="Bold" 
+                                   BackgroundColor="{StaticResource blueTheme2}" 
+                                   TextColor="{StaticResource printColor}" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin=".5">
+                                    </Label>
+                                    <Label Text="{Binding milestoneType}" 
+                                   FontSize="Caption" 
+                                           LineBreakMode="WordWrap"
+                                       Grid.Column="1"
+                                       HorizontalOptions="Fill"  
+                                   VerticalOptions="FillAndExpand"
+                                   FontAttributes="Bold" 
+                                   BackgroundColor="{StaticResource blueTheme2}" 
+                                   TextColor="{StaticResource printColor}" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin=".5">
+                                    </Label>
+                                    <Label Text="{Binding courseTitle}" 
+                                   FontSize="Caption" 
+                                           LineBreakMode="WordWrap"
+                                       Grid.Column="2"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="FillAndExpand"
+                                   FontAttributes="Bold" 
+                                   BackgroundColor="{StaticResource blueTheme2}" 
+                                   TextColor="{StaticResource printColor}" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin=".5">
+                                    </Label>
+                                    <Label Text="{Binding untilDue}" 
+                                   FontSize="Caption" 
+                                           LineBreakMode="WordWrap"
+                                       Grid.Column="3"
+                                   HorizontalOptions="Fill"  
+                                   VerticalOptions="FillAndExpand"
+                                   FontAttributes="Bold" 
+                                   BackgroundColor="{StaticResource blueTheme2}" 
+                                   TextColor="{StaticResource printColor}" 
+                                   HorizontalTextAlignment="Center" 
+                                   Margin=".5">
+                                    </Label>
+                                </Grid>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:calendar="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.WorkerPages.WCalendarPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <AbsoluteLayout HorizontalOptions="FillAndExpand">
+        <Grid RowSpacing="0" BackgroundColor="{StaticResource headerfootercolor}" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                AbsoluteLayout.LayoutFlags="All" x:Name="background">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <calendar:SfCalendar x:Name="calendar" ShowInlineEvents="True" BackgroundColor="{StaticResource backgroundcolor}" BlackoutDatesViewMode="Stripes">
+                <calendar:SfCalendar.MonthViewSettings>
+                    <calendar:MonthViewSettings 
+                          CurrentMonthBackgroundColor = "{StaticResource backgroundcolor}"
+                        CurrentMonthTextColor = "{StaticResource textcolor}"
+                        PreviousMonthBackgroundColor = "{StaticResource backgroundcolor}"
+                        PreviousMonthTextColor = "{StaticResource textcolor}"
+                        DateSelectionColor = "{StaticResource textcolor}"
+                        SelectedDayTextColor = "{StaticResource highlightscolor}"
+                        DayFontSize = "12"
+                        DayHeaderFontSize = "14"
+                        DayHeaderBackgroundColor = "{StaticResource headerfootercolor}"
+                        SelectionRadius = "15"
+                        BlackoutColor="{StaticResource buttonscolor}"
+                        TodaySelectionTextColor = "{StaticResource buttonscolor}"
+                        TodaySelectionBackgroundColor = "{StaticResource highlightscolor}"
+                        DayHeaderTextColor = "{StaticResource textcolor}"
+                        HeaderBackgroundColor = "{StaticResource headerfootercolor}"
+                        HeaderFontAttributes = "Italic"
+                        HeaderFontSize = "16"
+                        WeekEndTextColor = "{StaticResource textcolor}"
+                        WeekEndBackgroundColor = "{StaticResource backgroundcolor}"/>
+                </calendar:SfCalendar.MonthViewSettings>
+
+            </calendar:SfCalendar>
+
+            <Label Grid.Row="1" Text="Times may only reflect order and not a hard schedule" VerticalOptions="Center" 
+                                       BackgroundColor="{StaticResource headerfootercolor}" FontSize="Micro" HorizontalOptions="CenterAndExpand"/>
+
+
+            <Grid HorizontalOptions="CenterAndExpand" Padding="0,5,0,5" Grid.Row="2" BackgroundColor="{StaticResource headerfootercolor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="viewRequestsButton" 
+                    Grid.Column="0"
+                        Text="View Request"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="viewRequestsButton_Clicked"/>
+
+                <Button x:Name="jobsButton" 
+                    Grid.Column="1"
+                        Text="Jobs"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="jobsButton_Clicked"/>
+                
+                <Button x:Name="cancelButton" 
+                    Grid.Column="2"
+                        Text="Back"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="cancelButton_Clicked"/>
+            </Grid>
+
+        </Grid>
+
+        <ContentView x:Name="overlay" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                AbsoluteLayout.LayoutFlags="All" 
+                BackgroundColor="#C0808080" 
+                Padding="10, 0" IsEnabled="False"
+                     IsVisible="False">
+
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="2" BackgroundColor="{StaticResource headerfootercolor}" Padding="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="dateScheduledLabel" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="{StaticResource headerfootercolor}"/>
+
+                <Picker x:Name="workerPicker" Grid.Row="1" Title="Employee" VerticalOptions="Center" HorizontalOptions="Fill" SelectedIndexChanged="workerPicker_SelectedIndexChanged"/>
+
+                <Picker x:Name="reasonPicker" Grid.Row="2" Title="Reason" VerticalOptions="Center" HorizontalOptions="Fill"/>
+
+                <Grid Grid.Row="3" HorizontalOptions="CenterAndExpand" Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="newRequestButton" 
+                    Grid.Column="0"
+                        Text="New"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="newRequestButton_Clicked"/>
+
+                    <Button x:Name="cancelOverlayButton" 
+                    Grid.Column="1"
+                        Text="Cancel"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="cancelOverlayButton_Clicked"/>
+
+                </Grid>
+            </Grid>
+        </ContentView>
+    </AbsoluteLayout>
+</ContentPage>
+

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.RegisterEmployeePage">
+
+    <Grid RowSpacing="0" x:Name="registerEmployeePageContent" BackgroundColor="{StaticResource backgroundcolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+
+
+        <StackLayout Grid.Row="1">
+            <Label Text="TimeTrimmer" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Padding="0,25,0,0"/>
+        </StackLayout>
+
+        <!-- Body Background-->
+        <ScrollView Grid.Row="2" VerticalOptions="Center"
+                     Padding="0,5,0,5" VerticalScrollBarVisibility="Always">
+            <StackLayout>
+                <Entry x:Name="userName" Placeholder="Username"  HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="userPass" IsPassword="True" Placeholder="Password"  HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="userPass2" IsPassword="True" Placeholder="Verify Password"  HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="userEmail" Placeholder="Email"  HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="userEmail2" Placeholder="Verify Email" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="ownersEmail" Placeholder="Owners Email" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Label x:Name="statusLabel" IsEnabled="False" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
+
+
+        <!-- ButtonArea Background-->
+            <Button Grid.Row="3"
+                x:Name="registerButton"
+                    Text="Register"
+                    HorizontalOptions="Center"
+                    Pressed="registerButton_Pressed"/>
+
+
+
+
+        <!-- Header Background-->
+        <Image x:Name="headerImage"
+               HorizontalOptions="FillAndExpand"
+               Aspect="AspectFill"
+               Grid.Row="0"/>
+        <Image x:Name="curvedMask"
+               HorizontalOptions="FillAndExpand"
+               TranslationY="5"
+               Aspect="Fill"
+               Grid.Row="0" />
+
+        <!-- Icon Background-->
+        <Image Source="time.png" HorizontalOptions="Center" WidthRequest="100"
+               HeightRequest="100" VerticalOptions="End"
+               Grid.Row="0" TranslationY="25"/>
+
+        <!-- Footer Background-->
+        <Label x:Name="footer" Text="Photos by Benjamin Combs, Arron Choi, Spencer Davis and Eco Warrior Princess on Unsplash"
+                   VerticalTextAlignment="End"
+                   FontSize="Caption"
+                   HorizontalTextAlignment="Center" 
+                   Grid.Row="4"/>
+
+    </Grid>
+
+</ContentPage>

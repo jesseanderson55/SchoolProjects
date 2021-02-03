@@ -1,0 +1,143 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\curvedmask.png" />
+    <None Remove="Assets\Images\headerbackground.png" />
+    <None Remove="WorkerPages\WorkerSplashPage" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\curvedmask.png" />
+    <EmbeddedResource Include="Assets\Images\headerbackground.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Mobile.Client" Version="4.1.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.DataGridExport" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCarousel" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChat" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.56" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="18.1.0.56" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.847" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="SupervisorPages\SupervisorSplashPage.xaml.cs">
+      <DependentUpon>SupervisorSplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="SupervisorPages\SJobPage.xaml.cs">
+      <DependentUpon>SJobPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="SupervisorPages\SCalendarPage.xaml.cs">
+      <DependentUpon>SCalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="WorkerPages\TimeClockEditPage.xaml.cs">
+      <DependentUpon>TimeClockEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="WorkerPages\NoticePage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="WorkerPages\WCalendarPage.xaml.cs">
+      <DependentUpon>WCalendarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="WorkerPages\WJobPage.xaml.cs">
+      <DependentUpon>WJobPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="WorkerPages\WorkerSplashPage.xaml.cs">
+      <DependentUpon>WorkerSplashPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="AnimationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\CrewModifyMembersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\CrewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\EmployeeAddEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\EmployeePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobAllPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobCustomerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobSchedulePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobTaskToolPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\JobWorkersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\NoticePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\OwnerSplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="OwnerPages\ReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RegisterEmployeePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RegisterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SupervisorPages\NoticePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SupervisorPages\TaskPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SupervisorPages\TimeclockPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="userDetails.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="WorkerPages\TaskPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="WorkerPages\TimeclockPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

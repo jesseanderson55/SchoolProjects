@@ -1,0 +1,31 @@
+select w.ID, w.workerLastName as Proprieter, cu.customerName, jo.JobName,
+jf.dateScheduled, n.customerNote, ta.taskName, ta.taskPricePer, la.id, tool.toolName, 
+tool.toolCostPerHour
+		from worker w 
+        join customer cu on(w.ID = cu.employeeID)
+		join job jo on(cu.ID = jo.CustomerID)
+        join jobfunction jf on(jo.ID = jf.jobID) 
+		left join note n on(jo.ID = n.jobID)
+        left join task ta on(jf.taskID = ta.ID) 
+		left join labor la on(jf.laborID = la.ID)
+        left join tool tool on(la.toolID = tool.ID)
+        order by jf.datescheduled
+
+
+		!!! PROBLEM WITH TOOLS AND LABOR NOT BEING ADDED YET !!!
+
+
+		CREATE  VIEW dbo.SplashPageView    
+AS select w.ID, w.workerLastName, jf.dateScheduled, JobName,
+        ta.taskName, ToolName, cu.customerName, n.customerNote,
+		timeDateStart, timeDateEnd 
+		from worker w 
+		join worker wor on(w.employerEmail = wor.workerEmail)
+		join customer cu on(w.ID = cu.employeeID)
+		join job jo on(cu.ID = jo.CustomerID)
+        join jobfunction jf on(jo.ID = jf.jobID) 
+		join note n on(jo.ID = n.jobID)
+		join labor l on (wor.ID= l.employeeID)
+		join Tool t on(w.ID = j.ID)
+        join task ta on(jf.taskID = ta.ID) 
+		;

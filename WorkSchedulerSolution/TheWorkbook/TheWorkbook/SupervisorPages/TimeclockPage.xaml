@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.SupervisorPages.TimeclockPage">
+
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource headerfootercolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+
+        </Grid.RowDefinitions>
+
+        <listview:SfListView x:Name="TimeClockListView" ItemSize="90" AutoFitMode="Height" Grid.ColumnSpan="3"
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}"
+                             SelectionGesture="Tap" SelectionMode="Single" IsStickyFooter="True">
+
+            <syncfusion:SfListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid BackgroundColor="{StaticResource headerfootercolor}" HeightRequest="45">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label LineBreakMode="NoWrap" Text="Start Time" FontAttributes="Bold" BackgroundColor="{StaticResource headerfootercolor}"
+                                   HorizontalOptions="Start" VerticalOptions="Center" TranslationX="5"/>
+                        <Label LineBreakMode="NoWrap" Text="End Time" FontAttributes="Bold" BackgroundColor="{StaticResource headerfootercolor}"
+                                   HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1" TranslationX="-5"/>
+
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.HeaderTemplate>
+
+            <syncfusion:SfListView.SelectedItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="3"  BackgroundColor="{StaticResource highlightscolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding ClockedIn}" VerticalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"    
+                                                       Text="{Binding ClockedOut}" Grid.Column="1" VerticalOptions="Start" HorizontalTextAlignment="End"/>
+                                        <Button x:Name="editTimeButton" Text="Edit" Grid.Column="1" Grid.Row="1" Clicked="editTimeButton_Clicked"/>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.SelectedItemTemplate>
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="AUTO"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding ClockedIn}" VerticalOptions="Start"/>
+                                        <Label LineBreakMode="NoWrap"    
+                                                       Text="{Binding ClockedOut}" Grid.Column="1" VerticalOptions="Start" HorizontalTextAlignment="End"/>
+
+
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </listview:SfListView>
+
+        <Button Grid.Row="1" Grid.Column="0" Text="New Clock In" x:Name="clockInButton" Clicked="clockInButton_Clicked"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="Clock Out" x:Name="clockOutButton" Clicked="clockOutButton_Clicked"/>
+        <Button Grid.Row="1" Grid.Column="2" Text="Send Hours" x:Name="sendHoursButton" Clicked="sendHoursButton_Clicked"/>
+
+    </Grid>
+</ContentPage>

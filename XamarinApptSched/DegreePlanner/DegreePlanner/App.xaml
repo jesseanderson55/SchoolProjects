@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="blueTheme">#003057</Color>
+            <Color x:Key="blueTheme2">#4986AD</Color>
+            <Color x:Key="goldTheme">#C69214</Color>
+            <Color x:Key="printColor">#D9D9D6</Color>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource blueTheme}"/>
+                <Setter Property="TextColor" Value="{StaticResource printColor}"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="Padding" Value="1"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource blueTheme}"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Title"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource blueTheme}"/>
+                <Setter Property="TextColor" Value="{StaticResource printColor}"/>
+                <Setter Property="Padding" Value="10,10"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

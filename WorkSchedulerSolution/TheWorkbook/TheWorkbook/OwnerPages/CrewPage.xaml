@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+             xmlns:main="clr-namespace:TheWorkbook"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.OwnerPages.CrewPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <main:GroupHeaderConverter x:Key="TemplateConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" >
+
+        <Grid BackgroundColor="{StaticResource headerfootercolor}" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                AbsoluteLayout.LayoutFlags="All" x:Name="background">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <listview:SfListView x:Name="AllCrewListView" ItemSize="90" AutoFitMode="Height" GroupHeaderSize="50" 
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" AllowGroupExpandCollapse="True"
+                             SelectionGesture="Tap" SelectionMode="Single">
+
+                <syncfusion:SfListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <!--Each cell is called based on how many GroupDescriptors and displayed using the GroupHeaderConverter called by TemplateConverter. 
+                            It sends the object # from its order in GroupDescriptors (this is level) and sends to converter the property type (e.g. color)-->
+                                <StackLayout BackgroundColor="{Binding Level,Converter={StaticResource TemplateConverter}}"
+                            Padding="{Binding Level,Converter={StaticResource TemplateConverter}}">
+
+                                    <Label Text="{Binding Key}" VerticalOptions="Center" HorizontalOptions="Start" 
+                                       BackgroundColor="{Binding Level,Converter={StaticResource TemplateConverter}}"/>
+
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.GroupHeaderTemplate>
+
+                <!--ItemTemplate showing how the date in the Bound object is displayed-->
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Frame HasShadow="True">
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label LineBreakMode="NoWrap" x:Name="itemTemplateLVLabel" 
+                                                       Text="{Binding WorkerLastName}"/>
+
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+
+            </listview:SfListView>
+
+            <Grid Grid.Row="1" HorizontalOptions="CenterAndExpand" Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}" WidthRequest="300">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="addCrewButton"
+                                                Grid.Column="0"
+                                                Text="Add Crew"
+                                                FontAttributes="Bold"
+                                                BorderWidth="1"
+                                                Clicked="addCrewButton_Clicked"/>
+                <Button x:Name="modifyCrewButton"
+                                                Grid.Column="1"
+                                                Text="Modify Crew"
+                                                FontAttributes="Bold"
+                                                BorderWidth="1"
+                                                Clicked="modifyCrewButton_Clicked"/>
+
+            </Grid>
+
+        </Grid>
+
+        <ContentView x:Name="overlay" 
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1" 
+                AbsoluteLayout.LayoutFlags="All" 
+                BackgroundColor="#C0808080" 
+                Padding="10, 0" IsEnabled="False"
+                     IsVisible="False">
+
+            <Grid Padding="10" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="{StaticResource highlightscolor}" >
+                <Grid BackgroundColor="{StaticResource backgroundcolor}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <listview:SfListView x:Name="crewNameListView" ItemSize="90" AutoFitMode="Height" GroupHeaderSize="50" 
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" Grid.Row="0"
+                             SelectionGesture="Tap" SelectionMode="Single" IsEnabled="false" IsVisible="False">
+
+                        <syncfusion:SfListView.DataSource>
+                            <dataSource:DataSource>
+                                <!--selects properties to sort the listview by-->
+                                <dataSource:DataSource.SortDescriptors>
+                                    <dataSource:SortDescriptor PropertyName="CrewName" Direction="Ascending"/>
+                                </dataSource:DataSource.SortDescriptors>
+                            </dataSource:DataSource>
+                        </syncfusion:SfListView.DataSource>
+
+                        <syncfusion:SfListView.SelectedItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                            <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid RowSpacing="1" BackgroundColor="{StaticResource highlightscolor}">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding CrewName}"/>
+
+                                                </Grid>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.SelectedItemTemplate>
+
+                        <!--ItemTemplate showing how the date in the Bound object is displayed-->
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Frame HasShadow="True">
+                                            <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding CrewName}"/>
+
+                                                </Grid>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </listview:SfListView>
+
+                    <Grid Grid.Row="1" x:Name="crewNameListViewButtons" HorizontalOptions="FillAndExpand" 
+                      Padding="0,5,0,5" BackgroundColor="{StaticResource headerfootercolor}"
+                      IsEnabled="False" IsVisible="False" RowSpacing="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="deleteCrewButton" Text="Delete" Clicked="deleteCrewButton_Clicked" Grid.ColumnSpan="4"
+                                        FontAttributes="Bold" Grid.Column="0" BorderWidth="1" Grid.Row="0"/>
+                        <Button x:Name="cancelCrewButton" Text="Cancel" Clicked="cancelCrewButton_Clicked" 
+                                        FontAttributes="Bold" Grid.Column="0" BorderWidth="1" Grid.Row="1"/>
+                        <Button x:Name="addMembersButton" Text="Edit Members" Clicked="addMembersButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="1" BorderWidth="1" Grid.Row="1"/>
+                        <Button x:Name="copyCrewButton" Text="Copy" Clicked="copyCrewButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="2" BorderWidth="1" Grid.Row="1"/>
+                        <Button x:Name="renameCrewButton" Text="Rename" Clicked="renameCrewButton_Clicked"
+                                        FontAttributes="Bold" Grid.Column="3" BorderWidth="1" Grid.Row="1"/>
+                    </Grid>
+                    
+                </Grid>
+                <ContentView  x:Name="overlayNewCrew" BackgroundColor="{StaticResource buttonscolor}" IsEnabled="False" IsVisible="False">
+                    <Grid  HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource backgroundcolor}" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" x:Name="crewNameLabel" Text="New Crew" Grid.ColumnSpan="2" HorizontalOptions="Center"/>
+                        <Entry Grid.Row="1" x:Name="crewEntry" Grid.ColumnSpan="2"/>
+                        <Button Grid.Row="2" Grid.Column="0" Text="Cancel" x:Name="cancelNewCrew" Clicked="cancelNewCrew_Clicked"/>
+                        <Button Grid.Row="2" Grid.Column="1" Text="Save" x:Name="createNewCrew" Clicked="createNewCrew_Clicked"/>
+
+                    </Grid>
+                </ContentView>
+                
+            </Grid>
+        </ContentView>
+    </AbsoluteLayout>
+</ContentPage>

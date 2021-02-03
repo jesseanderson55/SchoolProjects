@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.userDetails">
+
+    <Grid RowSpacing="0" x:Name="userDetailsContent" BackgroundColor="{StaticResource backgroundcolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+
+
+        <StackLayout Grid.Row="0">
+            <Label x:Name="titleLabel" Text="Thank You" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="End" Padding="0,25,0,0"/>
+        </StackLayout>
+
+        <!-- Body Background-->
+        <ScrollView Grid.Row="1" VerticalOptions="Center"
+                     Padding="0,5,0,5" VerticalScrollBarVisibility="Always">
+            <StackLayout>
+                <Entry x:Name="lastName" Placeholder="Last Name" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="companyName" Placeholder="Company Name" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="phoneNumber" Placeholder="Phone" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="streetAddress" Placeholder="Street Address" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="cityAddress" Placeholder="City" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="stateAddress" Placeholder="State" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Entry x:Name="zipCode" Placeholder="Zip Code" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+                <Label x:Name="statusLabel" IsEnabled="False" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
+
+
+
+        <!-- Register Button -->
+        <Button Grid.Row="2" x:Name="saveInfoButton"
+                    Text="Save"
+                    HorizontalOptions="Center"
+                    Pressed="saveInfoButton_Pressed"/>
+    </Grid>
+</ContentPage>

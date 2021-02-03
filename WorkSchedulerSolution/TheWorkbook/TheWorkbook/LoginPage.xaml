@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <Grid RowSpacing="0" x:Name="loginContent" BackgroundColor="{StaticResource backgroundcolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Background-->
+        <Image x:Name="headerImage"
+               HorizontalOptions="FillAndExpand"
+               Aspect="AspectFill"
+               Grid.Row="0"/>
+
+        <Image x:Name="curvedMask"
+               HorizontalOptions="FillAndExpand"
+               Aspect="Fill"
+               Grid.Row="0"/>
+
+        <StackLayout Grid.Row="1">
+            <Label Text="TimeTrimmer" Grid.Row="1" HorizontalOptions="Center" 
+                   VerticalOptions="End" Padding="0,25,0,0"/>
+        </StackLayout>
+
+        <!-- Body Background-->
+
+        <StackLayout Grid.Row="2" VerticalOptions="Center"
+                     Padding="0,5,0,5">
+            <Entry x:Name="userName" Placeholder="User" Grid.Row="2" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+            <Entry x:Name="userPass" Placeholder="Password" IsPassword="True" Grid.Row="2" HorizontalOptions="CenterAndExpand" 
+                   WidthRequest="200"/>
+            <Label x:Name="statusLabel" HorizontalOptions="Center" IsEnabled="False"/>
+        </StackLayout>
+
+        <!-- ButtonArea Background-->
+        <Grid Grid.Row="3" Margin="0,0,0,5" RowSpacing="2" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource backgroundcolor}">
+
+
+            <Button x:Name="LoginButton"
+                HorizontalOptions="Fill"
+                    Text="Login"
+                    Pressed="LoginButton_Pressed"/>
+            <Button x:Name="registerBusinessButton"
+                HorizontalOptions="Fill"
+                    Text="Register Business"
+                    Grid.Row="1"
+                    Pressed="registerBusinessButton_Pressed"/>
+            <Button x:Name="newEmployeeButton" 
+                Text="Register Employee"
+                Pressed="newEmployeeButton_Pressed"
+                HorizontalOptions="Fill"
+                    Grid.Row="2"/>
+
+        </Grid>
+
+       
+
+        <!-- Icon Background-->
+
+
+        <Image Source="time.png" HorizontalOptions="Center" WidthRequest="100"
+               HeightRequest="100" VerticalOptions="End"
+               Grid.Row="0" TranslationY="25"/>
+
+
+
+
+        <!-- Footer Background-->
+
+
+        <Label x:Name="footer" Text="Photos by Benjamin Combs, Arron Choi, Spencer Davis and Eco Warrior Princess on Unsplash"
+                   VerticalTextAlignment="End"
+                   FontSize="Caption"
+                   HorizontalTextAlignment="Center" 
+                   Grid.Row="5">
+            <Label.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.WinPhone>
+                        <OnIdiom x:TypeArguments="x:Double" 
+                                                                         Phone="12" 
+                                                                         Tablet="14" />
+                    </OnPlatform.WinPhone>
+                    <OnPlatform.Android>
+                        <OnIdiom x:TypeArguments="x:Double"
+                                                                         Phone="8"
+                                                                         Tablet="10" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                        <OnIdiom x:TypeArguments="x:Double"
+                                                                         Phone="18"
+                                                                         Tablet="10" />
+                    </OnPlatform.iOS>
+                </OnPlatform>
+            </Label.FontSize>
+        </Label>
+
+
+    </Grid>
+</ContentPage>

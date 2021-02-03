@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.TermPageDetails">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToMainPage" 
+                     Text="Main"
+                     Icon="home.png"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="ToMainPage_Clicked"/>
+        <ToolbarItem x:Name="deleteButton"
+                     Icon="delete.png"
+                     Clicked="deleteButton_Clicked"
+                     Priority="3"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="termButton"
+                     Text="Term"
+                     Clicked="termButton_Clicked"
+                     Priority="3"
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content> 
+        <Grid BackgroundColor="{StaticResource blueTheme2}">
+            <StackLayout Margin="20,0,20,50">
+                <Label x:Name="termNameEntry" 
+                       TextColor="{StaticResource printColor}"
+                       HorizontalOptions="FillAndExpand"/>
+                <Label HeightRequest="40" 
+                       TextColor="{StaticResource printColor}"
+                       FontSize="Medium" 
+                       Text="Start" />
+                <DatePicker x:Name="termStartDatePicker"
+                            TextColor="{StaticResource printColor}"/>
+                <Label HeightRequest="40" 
+                       FontSize="Medium" 
+                       Text="End" />
+                <DatePicker x:Name="termEndDatePicker"
+                            TextColor="{StaticResource printColor}"/>
+            </StackLayout>
+            <Button x:Name="updateTermButton"
+                    Grid.Row="0"
+                    Text="Update Term" 
+                    BorderColor="Snow" 
+                    FontAttributes="Bold"
+                    BorderWidth="1"
+                    HorizontalOptions="End"
+                    WidthRequest="160"
+                    HeightRequest="70"
+                    Margin="0,0,20,22"
+                    VerticalOptions="End"
+                    Pressed="updateTermButton_Pressed"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

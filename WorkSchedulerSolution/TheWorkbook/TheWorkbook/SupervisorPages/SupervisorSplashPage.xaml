@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:accordion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:main="clr-namespace:TheWorkbook"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.SupervisorPages.SupervisorSplashPage">
+
+    <!--References the GroupHeaderConverter class for colors and shape of each groupheader using TemplateConverter to call the class and pass xaml porperties like color-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <main:GroupHeaderConverter x:Key="TemplateConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--basic toolbar button hidden in an ellipsis using secondary order.-->
+    <ContentPage.ToolbarItems>
+        
+        <ToolbarItem x:Name="userDetailsButton" 
+                     Text="Profile"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="userDetailsButton_Clicked"/>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+        
+    </ContentPage.ToolbarItems>
+
+    <!--3 row grid containing the listview and 2 rows of buttons-->
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource headerfootercolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--syncfusions listview. Default example of listView is bound in xaml.cs and following bindings bind to listView.itemsource properties-->
+        <syncfusion:SfListView x:Name="listView" ItemSize="90"  AutoFitMode="Height" GroupHeaderSize="50" 
+                               ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" IsStickyFooter="True"
+                           SelectionGesture="Tap" SelectionMode="Single">
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="15*" />
+                                            <ColumnDefinition Width="45*" />
+                                            <ColumnDefinition Width="40*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding HourToSortBy}"/>
+                                        <Label LineBreakMode="NoWrap"
+                                                       Text="{Binding CustomerName}" Grid.Column="1"/>
+                                        <Label LineBreakMode="NoWrap"
+                                                       Text="{Binding JobName}" Grid.Column="1" Grid.Row="1"/>
+                                        <Label LineBreakMode="NoWrap" HorizontalTextAlignment="End"
+                                                       Text="Workers Assigned?" Grid.Column="2"/>
+                                        <CheckBox IsChecked="{Binding WorkersAssigned}" IsEnabled="False" Grid.Column="2" Grid.Row="1"
+                                                      Color="{StaticResource buttonscolor}" HorizontalOptions="End"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+           </syncfusion:SfListView.ItemTemplate>
+            
+        </syncfusion:SfListView>
+
+        <Grid Grid.Row="1" BackgroundColor="{StaticResource headerfootercolor}"
+              HorizontalOptions="CenterAndExpand" Padding="0,5,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="CalendarButton"
+                    Grid.Column="0"
+                        Text="Calendar"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="CalendarButton_Clicked"/>
+            <Button x:Name="noticeButton"
+                    Grid.Column="1"
+                        Text="Notice"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="noticeButton_Clicked"/>
+            <Button x:Name="jobsButton"
+                    Grid.Column="2"
+                        Text="Jobs"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="jobsButton_Clicked"/>
+            <Button x:Name="timeClockButton"
+                    Grid.Column="3"
+                        Text="Time Clock"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="timeClockButton_Clicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>
+   

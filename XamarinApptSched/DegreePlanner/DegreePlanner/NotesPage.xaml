@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.NotesPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToMainPage" 
+                     Text="Main"
+                     Icon="home.png"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="ToMainPage_Clicked"/>
+        <ToolbarItem x:Name="addButton"
+                     Icon="add.png"
+                     Clicked="addButton_Clicked"
+                     Priority="1"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="deleteButton"
+                     Icon="delete.png"
+                     Clicked="deleteButton_Clicked"
+                     Priority="2"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="termButton"
+                     Text="Term"
+                     Clicked="termButton_Clicked"
+                     Priority="3"
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource blueTheme2}">
+            <Label x:Name="notesLabel"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Start"/>
+            <Picker x:Name="notesPicker"
+                    ItemDisplayBinding="{Binding notesName}"
+                    Title="List of saved notes for this course"
+                    Margin="20,20,20,0"
+                    TextColor="{StaticResource printColor}"
+                    TitleColor="{StaticResource printColor}"
+                    FontSize="Large"
+                    SelectedIndexChanged="notesPicker_SelectedIndexChanged"/>
+            <Entry x:Name="notesTitle" 
+                   Placeholder="Note Title"
+                    Margin="20,0,20,0"
+                   BackgroundColor="{StaticResource blueTheme2}"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"/>
+            <Editor x:Name="notesEntry"
+                    Margin="20,0,20,0"
+                   Placeholder="Start notes here"
+                   TextColor="{StaticResource printColor}"
+                    BackgroundColor="{StaticResource blueTheme2}"
+                   PlaceholderColor="{StaticResource printColor}"
+                    AutoSize="TextChanges"/>
+            <Button x:Name="shareButton"
+                        Text="Share"
+                        BorderColor="Snow" 
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        WidthRequest="160"
+                        HeightRequest="70"
+                        Margin="0,0,0,20"
+                        Pressed="shareButton_Pressed"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.WorkerPages.TimeClockEditPage">
+
+
+
+    <Grid RowSpacing="1" VerticalOptions="Fill" BackgroundColor="{StaticResource headerfootercolor}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <sfDatePicker:SfDatePicker x:Name="datePicker" PickerHeight="300" Grid.ColumnSpan="2" EnableLooping="True"
+                                       BackgroundColor="{StaticResource backgroundcolor}" 
+                                       SelectedItemTextColor="{StaticResource textcolor}"
+                                       UnselectedItemTextColor="{StaticResource textcolor}"
+                                       BorderColor="{StaticResource headerfootercolor}"
+                                       SelectionBackgroundColor="{StaticResource highlightscolor}"
+                                       HeaderBackgroundColor="{StaticResource buttonscolor}"
+                                       HeaderTextColor="{StaticResource textcolor}"
+                                       ColumnHeaderBackgroundColor="{StaticResource backgroundcolor}"
+                                       ColumnHeaderTextColor="{StaticResource textcolor}"
+                                       Margin="1"/>
+
+        <sfDatePicker:SfTimePicker x:Name="timePicker" PickerHeight="300" Grid.ColumnSpan="2" EnableLooping="True" 
+                                   Format="HH_mm"  BackgroundColor="{StaticResource backgroundcolor}" 
+                                       SelectedItemTextColor="{StaticResource textcolor}"
+                                       UnselectedItemTextColor="{StaticResource textcolor}"
+                                       BorderColor="{StaticResource headerfootercolor}"
+                                       SelectionBackgroundColor="{StaticResource highlightscolor}"
+                                       HeaderBackgroundColor="{StaticResource buttonscolor}"
+                                       HeaderTextColor="{StaticResource textcolor}"
+                                       ColumnHeaderBackgroundColor="{StaticResource backgroundcolor}"
+                                       ColumnHeaderTextColor="{StaticResource textcolor}"
+                                       Margin="1" IsVisible="False" IsEnabled="False"/>
+
+        <Button Grid.Row="1" Grid.Column="0" Text="Ok" x:Name="okNewDate" Clicked="okNewDate_Clicked"/>
+        <Button Grid.Row="1" Grid.Column="1" Text="Cancel" x:Name="cancelNewDate" Clicked="cancelNewDate_Clicked"/>
+
+
+    </Grid>
+
+
+</ContentPage>

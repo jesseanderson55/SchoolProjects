@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.CoursePageAdd">
+    <ContentPage.Content/>
+
+    <ScrollView VerticalScrollBarVisibility="Always"
+                    Grid.ColumnSpan="2">
+        <Grid BackgroundColor="{StaticResource blueTheme2}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout HorizontalOptions="Fill" 
+                     VerticalOptions="Center"
+                     Margin="20,0,20,0"
+                     Grid.Row="0"
+                     Grid.ColumnSpan="2">
+                <Label x:Name="termNameEntry"
+                   TextColor="{StaticResource printColor}"/>
+                <Entry x:Name="courseNameEntry"
+                   Placeholder="Course Name"
+                   PlaceholderColor="{StaticResource printColor}"
+                   TextColor="{StaticResource printColor}"/>
+                <Picker x:Name="courseStatusEntry"
+                    TextColor="{StaticResource printColor}"
+                    Title="Select course status"
+                    TitleColor="{StaticResource printColor}">
+                    <Picker.Items>
+                        <x:String>In Progress</x:String>
+                        <x:String>Completed</x:String>
+                        <x:String>Dropped</x:String>
+                        <x:String>Plan to Take</x:String>
+                    </Picker.Items>
+                </Picker>
+                <DatePicker x:Name="courseStartDatePicker"
+                        TextColor="{StaticResource printColor}"/>
+                <DatePicker x:Name="courseEndDatePicker"
+                        TextColor="{StaticResource printColor}"/>
+                <Entry x:Name="instructorNameEntry"
+                   Placeholder="Instructor Name"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"/>
+                <Entry x:Name="instructorPhoneEntry"
+                   Placeholder="Instructor Phone"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"/>
+                <Entry x:Name="instructorEmailEntry"
+                   Placeholder="Instructor Email"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"/>
+                <Button x:Name="saveCourseButton"
+                    Text="New Course"
+                    Grid.ColumnSpan="1"
+                        Grid.Column="1"
+                    BorderColor="Snow" 
+                    FontAttributes="Bold"
+                    BorderWidth="1"
+                    HorizontalOptions="End"
+                    WidthRequest="160"
+                    HeightRequest="70"
+                    Margin="0,0,20,22"
+                    VerticalOptions="End"
+                    Pressed="saveCourseButton_Pressed"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

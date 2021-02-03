@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.AssessmentsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToMainPage" 
+                     Text="Main"
+                     Icon="home.png"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="ToMainPage_Clicked"/>
+        <ToolbarItem x:Name="addButton"
+                     Icon="add.png"
+                     Clicked="addButton_Clicked"
+                     Priority="1"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="deleteButton"
+                     Icon="delete.png"
+                     Clicked="deleteButton_Clicked" 
+                     Priority="2"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="termButton"
+                     Text="Term"
+                     Clicked="termButton_Clicked"
+                     Priority="3"
+                     Order="Secondary"/>
+        <ToolbarItem x:Name="notesButton"
+                     Icon="notes.png"
+                     Clicked="notesButton_Clicked"  
+                     Priority="4"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource blueTheme2}">
+                <Label x:Name="assessmentLabel" 
+                   VerticalOptions="Start" 
+                   HorizontalOptions="FillAndExpand" 
+                   Margin="0,0,0,0"/>
+                <Picker x:Name="milestonePicker"
+                    ItemDisplayBinding="{Binding milestoneName}"
+                    Title="List of saved milestones"
+                    Margin="20,0,20,0"
+                    TextColor="{StaticResource printColor}"
+                    TitleColor="{StaticResource printColor}"
+                    SelectedIndexChanged="milestonePicker_SelectedIndexChanged"/>
+                <Entry x:Name="milestoneName" 
+                   Placeholder="Milestone Name"
+                    Margin="20,0,20,0"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"/>
+                <Picker x:Name="milestoneTypePicker"
+                    Title="Possible Milestones"
+                    Margin="20,0,20,0"
+                    TextColor="{StaticResource printColor}"
+                    TitleColor="{StaticResource printColor}">
+                    <Picker.Items>
+                        <x:String>Pre-Assessment</x:String>
+                        <x:String>Post Assessment</x:String>
+                        <x:String>Objective Assessment</x:String>
+                        <x:String>Chapter Completed</x:String>
+                        <x:String>Performance Assessment</x:String>
+                        <x:String>Personal Goal</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label Text="Start"
+                   FontSize="Small"/>
+                <DatePicker x:Name="milestoneStartDatePicker"
+                        Margin="20,0,20,0"
+                        TextColor="{StaticResource printColor}"/>
+                <Label Text="End"
+                   FontSize="Small"/>
+                <DatePicker x:Name="milestoneEndDatePicker"
+                        Margin="20,0,20,0"
+                        TextColor="{StaticResource printColor}"/>
+                <Editor x:Name="goalEntry"
+                    Margin="20,0,20,0"
+                   Placeholder="Notes for your goal here"
+                   TextColor="{StaticResource printColor}"
+                   PlaceholderColor="{StaticResource printColor}"
+                    AutoSize="TextChanges"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

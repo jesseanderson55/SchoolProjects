@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.OwnerPages.ReportPage">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="NoticesButton" 
+                     Text="Notice"
+                     Priority="0"
+                     Order="Secondary"
+                     Clicked="NoticesButton_Clicked"/>
+
+    </ContentPage.ToolbarItems>
+    
+    
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource backgroundcolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <datagrid:SfDataGrid x:Name="reportsDataGrid" ColumnSizer="Star">
+        </datagrid:SfDataGrid>
+
+        <Grid  BackgroundColor="{StaticResource headerfootercolor}" Grid.Row="1" Padding="2,2,2,5"
+              HorizontalOptions="Fill" WidthRequest="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Button x:Name="jobsButton"
+                    Grid.Column="0"
+                        Text="Jobs"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="jobsButton_Clicked"/>
+            <Button x:Name="employeesButton"
+                    Grid.Column="1"
+                        Text="Workers"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="employeesButton_Clicked"/>
+            <Button x:Name="sendButton"
+                    Grid.Column="2"
+                        Text="Export To PDF"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Clicked="sendButton_Clicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

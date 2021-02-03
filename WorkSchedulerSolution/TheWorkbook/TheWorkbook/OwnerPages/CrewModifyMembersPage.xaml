@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable" 
+             
+             x:Class="TheWorkbook.OwnerPages.CrewModifyMembersPage">
+    
+    
+    <Grid RowSpacing="0" BackgroundColor="{StaticResource headerfootercolor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="AUTO"/>
+        </Grid.RowDefinitions>
+        
+        
+        <listview:SfListView x:Name="listView" ItemSize="90" AutoFitMode="Height" 
+                             ItemSpacing="0" BackgroundColor="{StaticResource buttonscolor}" Grid.Row="0"
+                             SelectionGesture="Tap" SelectionMode="Multiple">
+            
+            <syncfusion:SfListView.DataSource>
+                <dataSource:DataSource>
+                    <!--selects properties to sort the listview by-->
+                    <dataSource:DataSource.SortDescriptors>
+                        <dataSource:SortDescriptor PropertyName="isSupervisor" Direction="Ascending"/>
+                        <dataSource:SortDescriptor PropertyName="workerLastName" Direction="Ascending"/>
+
+                    </dataSource:DataSource.SortDescriptors>
+                </dataSource:DataSource>
+            </syncfusion:SfListView.DataSource>
+
+            <syncfusion:SfListView.HeaderTemplate>
+                <DataTemplate>
+                    <Label Text="Choose workers for crew and save." BackgroundColor="{StaticResource headerfootercolor}"/>
+                </DataTemplate>
+            </syncfusion:SfListView.HeaderTemplate>
+
+                <syncfusion:SfListView.SelectedItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True" BackgroundColor="{StaticResource highlightscolor}">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource highlightscolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" BackgroundColor="{StaticResource highlightscolor}"
+                                                       Text="{Binding WorkerLastName}"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.SelectedItemTemplate>
+
+            <!--ItemTemplate showing how the date in the Bound object is displayed-->
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame HasShadow="True">
+                                <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="1" BackgroundColor="{StaticResource backgroundcolor}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label LineBreakMode="NoWrap" 
+                                                       Text="{Binding WorkerLastName}"/>
+
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </listview:SfListView>
+
+        <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" Padding="2,5,2,5" BackgroundColor="{StaticResource headerfootercolor}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="saveWorkersToCrew" Text="Save" Clicked="saveWorkersToCrew_Clicked" 
+                                        FontAttributes="Bold" Grid.Column="0" BorderWidth="1"/>
+            <Button x:Name="cancelExit" Text="Exit" Clicked="cancelExit_Clicked"
+                                        FontAttributes="Bold" Grid.Column="1" BorderWidth="1"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

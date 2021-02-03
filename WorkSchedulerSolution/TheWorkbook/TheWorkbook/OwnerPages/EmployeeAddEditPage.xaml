@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+xmlns:checkbox="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheWorkbook.OwnerPages.EmployeeAddEditPage">
+    <ContentPage.ToolbarItems>
+
+
+        <ToolbarItem x:Name="crewButton" 
+                     Text="Crew"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="crewButton_Clicked"/>
+
+
+
+    </ContentPage.ToolbarItems>
+
+    <Grid BackgroundColor="{StaticResource headerfootercolor}" x:Name="employeeAddEditPageContent" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="45"/>
+
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" >
+            <StackLayout Margin="15,10,10,15">
+
+                <Entry x:Name="employeeName" Placeholder="Employee Last Name" Margin="0,0,0,10"/>
+
+                <Entry x:Name="employeeEmail" Placeholder="Employee Email" Margin="0,10,0,0"/>
+
+                <Entry x:Name="employeePhone" Placeholder="Employee Phone" />
+
+                <Entry x:Name="employeeHourly" Placeholder="Employee Hourly"/>
+
+                <Entry x:Name="employeeAddress" Placeholder="Street Address"/>
+
+                <Entry x:Name="employeeCity" Placeholder="City"/>
+
+                <Entry x:Name="employeeState" Placeholder="State"/>
+
+                <Entry x:Name="employeeZip" Placeholder="Zip"/>
+
+                <checkbox:SfCheckBox x:Name="checkBox" Text="Supervisor" TextColor="{StaticResource textcolor}" 
+                                     CheckedColor="{StaticResource buttonscolor}" />
+
+            </StackLayout>
+        </ScrollView>
+
+
+        <Grid HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource headerfootercolor}"
+              WidthRequest="300" Padding="0,5,0,5" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="deleteEmployeeButton"
+                    Grid.Column="0"
+                        Text="Delete Employees"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Pressed="deleteEmployeeButton_Pressed"/>
+            <Button x:Name="saveEmployeeButton" 
+                    Grid.Column="1"
+                        Text="Save Employee"
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                    Pressed="saveEmployeeButton_Pressed"/>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DegreePlanner.CoursePageModify">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ToMainPage" 
+                     Text="Main"
+                     Icon="home.png"
+                     Priority="2"
+                     Order="Secondary"
+                     Clicked="ToMainPage_Clicked"/>
+        <ToolbarItem x:Name="notesButton"
+                     Icon="notes.png"
+                     Clicked="notesButton_Clicked"  
+                     Priority="4"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="deleteButton"
+                     Icon="delete.png"
+                     Clicked="deleteButton_Clicked"
+                     Priority="3"
+                     Order="Primary"/>
+        <ToolbarItem x:Name="termButton"
+                     Text="Term"
+                     Clicked="termButton_Clicked"
+                     Priority="3"
+                     Order="Secondary"/>
+        <ToolbarItem x:Name="examButton"
+                     Text="Exam"
+                     Clicked="examButton_Clicked"
+                     Priority="0"
+                     Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always">
+            <Grid BackgroundColor="{StaticResource blueTheme2}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout Margin="20,0,20,20"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="2">                    
+                    <Label x:Name="termNameEntry"
+                           TextColor="{StaticResource printColor}"/>
+                    <Label x:Name="courseNameEntry"
+                           TextColor="{StaticResource printColor}"/>
+                    <Picker x:Name="courseStatusEntry"
+                            TextColor="{StaticResource printColor}"
+                            Title="Select course status"
+                            TitleColor="{StaticResource printColor}">
+                        <Picker.Items>
+                            <x:String>In Progress</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Dropped</x:String>
+                            <x:String>Plan to Take</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <DatePicker x:Name="courseStartDatePicker"
+                                TextColor="{StaticResource printColor}"/>
+                    <DatePicker x:Name="courseEndDatePicker"
+                                TextColor="{StaticResource printColor}"/>
+                    <Entry x:Name="instructorNameEntry"
+                           Placeholder="Instructor Name"
+                           TextColor="{StaticResource printColor}"
+                           PlaceholderColor="{StaticResource printColor}"/>
+                    <Entry x:Name="instructorPhoneEntry"
+                           Placeholder="Instructor Phone"
+                           TextColor="{StaticResource printColor}"
+                           PlaceholderColor="{StaticResource printColor}"/>
+                    <Entry x:Name="instructorEmailEntry"
+                           Placeholder="Instructor Email"
+                           TextColor="{StaticResource printColor}"
+                           PlaceholderColor="{StaticResource printColor}"/>
+                    <Button x:Name="updateCourseButton"
+                        Text="Update Course"
+                        BorderColor="Snow" 
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        WidthRequest="160"
+                        HeightRequest="70"
+                        Pressed="updateCourseButton_Pressed"/>
+                    <Button x:Name="notes2Button"
+                        Text="Notes"
+                        BorderColor="Snow" 
+                        FontAttributes="Bold"
+                        BorderWidth="1"
+                        WidthRequest="160"
+                        HeightRequest="70"
+                            Margin="0,0,0,20"
+                        Pressed="notes2Button_Pressed"/>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
